@@ -11,7 +11,7 @@ def BubbleSort(N: int) -> list[int]:
     return lst
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-n', '--number')
+parser.add_argument('n', type=int)
 args = parser.parse_args()
-print(BubbleSort(int(args.number)))
+print(BubbleSort(int(args.n)))
 
