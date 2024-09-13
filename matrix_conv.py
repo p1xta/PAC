@@ -9,6 +9,16 @@ def read_matrix(file, matrix):
         nums = [int(num) for num in nums]
         matrix.append(nums)
 
+def check_matrix(file, matrix):
+    prev_row_lenght = len(matrix[0])
+    for row in matrix:
+        if len(row) != prev_row_lenght:
+            file.write("Matrices are invalid")
+            return False
+        else:
+            prev_row_lenght = len(row)
+    return True
+
 def matrix_conv(matrix1, matrix2):  # matrix 2 should be a square matrix
     kernel_center = len(matrix2) // 2  
     result = [[0 for i in range(len(matrix1[0]))] for j in range(len(matrix1))]
@@ -35,12 +45,13 @@ matrix_2 = []
 read_matrix(fin, matrix_1)
 read_matrix(fin, matrix_2)
 
-res = matrix_conv(matrix_1, matrix_2)
-kernel_center = len(matrix_2) // 2
-for i in range(kernel_center, len(res)-kernel_center):
-    for j in range(kernel_center, len(res[0])-kernel_center):
-        fout.write(f"{res[i][j]} ")
-    fout.write("\n")
+if check_matrix(fout, matrix_1) and check_matrix(fout, matrix_2):
+    res = matrix_conv(matrix_1, matrix_2)
+    kernel_center = len(matrix_2) // 2
+    for i in range(kernel_center, len(res)-kernel_center):
+        for j in range(kernel_center, len(res[0])-kernel_center):
+            fout.write(f"{res[i][j]} ")
+        fout.write("\n")
 
 fin.close()
 fout.close()
