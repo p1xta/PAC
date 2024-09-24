@@ -1,3 +1,4 @@
+
 class Pupa:
     def __init__(self) -> None:
         self.money = 0
