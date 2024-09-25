@@ -17,13 +17,13 @@ def second_way(real, synthetic, P):
     return output
 
 parser = argparse.ArgumentParser()
-parser.add_argument('input_file', type=str)
-parser.add_argument('output_file', type=str)
+parser.add_argument('file1', type=str)
+parser.add_argument('file2', type=str)
 parser.add_argument('prob', type=float)
 args = parser.parse_args()
 
-f1 = open(args.input_file, "r")
-f2 = open(args.output_file, "r")
+f1 = open(args.file1, "r")
+f2 = open(args.file2, "r")
 probability = args.prob
 
 real_data = f1.readline().split()
